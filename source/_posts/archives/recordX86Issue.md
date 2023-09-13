@@ -2,6 +2,7 @@
 layout: butt
 title: 记录一次X86主机救砖头的过程
 date: 2023-09-13 16:24:32
+cover: /images/X86/istoreos.png
 tags:
   - X86
 category: X86

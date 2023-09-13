@@ -48,19 +48,21 @@ code_word_wrap: true
 # formal:
 #   icon: link || the description || color
 social:
- fab fa-github: https://github.com/ShabaoFa || Github || '#24292e'
- fas fa-envelope: mailto:wlfpanda@gmail.com || Email || '#4a7dbe'
- fas fa-moblie: tel:159-****-2118 || Phone || '#4a7dbe'
+ fab fa-github: https://github.com/ShabaoFa || GitHub || '#24292e'
+ fas fa-envelope: mailto:wlfpanda@gmail.com || Email || '#24292e'
+ fa-brands fa-docker: https://hub.docker.com/u/wlfpanda1012 || DockerHub || '#24292e'
+# fas fa-mobile: tel:159-****-2118 || Phone || '#24292e'
+# fa-brands fa-weixin: mailto:wlfpanda@gmail.com || Wechat || '#24292e'
 
 # Image (圖片設置)
 # --------------------------------------
 
 # Favicon（網站圖標）
-favicon: /img/user-icon.jpg
+favicon: /images/favicon.jpg
 
 # Avatar (頭像)
 avatar:
-  img: /img/user-icon.jpg
+  img: /images/avatar.png
   effect: false # true: enable the effect of avatar / false: disable the effect of avatar
 
 # Disable all banner image
@@ -70,7 +72,8 @@ disable_top_img: false
 index_img:
 
 # If the banner of page not setting, it will show the top_img
-default_top_img:
+default_top_img: transparent
+#default_top_img: linear-gradient(45deg, blue, red)
 
 # The banner image of archive page
 archive_img:
@@ -112,7 +115,7 @@ error_img:
 
 # A simple 404 page
 error_404:
-  enable: false
+  enable: true
   subtitle: 'Page Not Found'
   background: https://i.loli.net/2020/05/19/aKOcLiyPl2JQdFD.png
 

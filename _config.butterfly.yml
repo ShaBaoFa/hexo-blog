@@ -48,9 +48,9 @@ code_word_wrap: true
 # formal:
 #   icon: link || the description || color
 social:
- fab fa-github: https://github.com/ShabaoFa || GitHub || '#24292e'
- fas fa-envelope: mailto:wlfpanda@gmail.com || Email || '#24292e'
- fa-brands fa-docker: https://hub.docker.com/u/wlfpanda1012 || DockerHub || '#24292e'
+ fab fa-github: https://github.com/ShabaoFa || GitHub'
+ fas fa-envelope: mailto:wlfpanda@gmail.com || Email'
+ fa-brands fa-docker: https://hub.docker.com/u/wlfpanda1012 || DockerHub'
 # fas fa-mobile: tel:159-****-2118 || Phone || '#24292e'
 # fa-brands fa-weixin: mailto:wlfpanda@gmail.com || Wechat || '#24292e'
 
@@ -106,7 +106,7 @@ cover:
   position: both
   # When cover is not set, the default cover is displayed (當沒有設置cover時，默認的封面顯示)
   default_cover:
-  # - https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg
+   - https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg
 
 # Replace Broken Images (替換無法顯示的圖片)
 error_img:
@@ -195,7 +195,7 @@ reward:
 # Easily browse and edit blog source code online.
 post_edit:
   enable: false
-  # url: https://github.com/user-name/repo-name/edit/branch-name/subdirectory-name/
+  # url: https://.com/user-name/repo-name/edit/branch-name/subdirectory-name/
   # For example: https://github.com/jerryc127/butterfly.js.org/edit/main/source/
   url:
 
@@ -236,7 +236,7 @@ footer:
 aside:
   enable: true
   hide: false
-  button: true
+  button: false
   mobile: true # display on mobile
   position: right # left or right
   display:
@@ -298,8 +298,8 @@ busuanzi:
 # Time difference between publish date and now (網頁運行時間)
 # Formal: Month/Day/Year Time or Year/Month/Day Time
 runtimeshow:
-  enable: false
-  publish_date:
+  enable: true
+  publish_date: 2020/05/01 00:00:00
 
 # Aside widget - Newest Comments
 newest_comments:
@@ -314,7 +314,7 @@ newest_comments:
 
 # Conversion between Traditional and Simplified Chinese (簡繁轉換)
 translate:
-  enable: false
+  enable: true
   # The text of a button
   default: 繁
   # the language of website (1 - Traditional Chinese/ 2 - Simplified Chinese）
@@ -336,12 +336,12 @@ darkmode:
   button: true
   # Switch dark/light mode automatically (自動切換 dark mode和 light mode)
   # autoChangeMode: 1  Following System Settings, if the system doesn't support dark mode, it will switch dark mode between 6 pm to 6 am
-  # autoChangeMode: 2  Switch dark mode between 6 pm to 6 am
+  autoChangeMode: 2  #Switch dark mode between 6 pm to 6 am
   # autoChangeMode: false
-  autoChangeMode: false
+  # autoChangeMode: false
   # Set the light mode time. The value is between 0 and 24. If not set, the default value is 6 and 18
-  start: # 8
-  end: # 22
+  start:  #8
+  end:  #22
 
 # show scroll percent in scroll-to-top button
 rightside_scroll_percent: false

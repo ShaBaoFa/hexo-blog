@@ -384,9 +384,9 @@ algolia_search:
 
 # Local search
 local_search:
-  enable: false
+  enable: true
   # Preload the search data when the page loads.
-  preload: false
+  preload: true
   # Show top n results per article, show all results by setting to -1
   top_n_per_article: 1
   # Unescape html strings to the readable one.
@@ -660,7 +660,7 @@ tag_ui: # 留空或 index
 background:
 
 # Footer Background
-footer_bg: false
+footer_bg: 'linear-gradient(45deg, blue, red)'
 
 # Add mask to header or footer (为 header 或 footer 添加黑色半透遮罩)
 mask:

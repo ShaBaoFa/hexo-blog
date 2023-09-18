@@ -6,6 +6,7 @@ cover: /images/X86/istoreos.png
 description: 一次手欠update的惊魂体验😰
 tags:
   - X86
+  - openwrt
 category: X86
 ---
 # 前情提要:

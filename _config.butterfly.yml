@@ -14,6 +14,7 @@ menu:
  服务器||fa-solid fa-server:
   Linux: /categories/Linux/
   X86: /categories/X86/
+  QNAP: /categories/QNAP/
  数据库||fa-solid fa-database:
   MySQL: /categories/MySQL/
   Redis: /categories/Redis/

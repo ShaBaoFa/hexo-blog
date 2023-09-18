@@ -2,8 +2,8 @@
 Thumbs.db
 db.json
 *.log
+ossutil.cfg
 node_modules/
 public/
 .deploy*/
 _multiconfig.yml
-ossutil.cfg

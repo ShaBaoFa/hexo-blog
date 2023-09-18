@@ -76,7 +76,7 @@ default_top_img: transparent
 #default_top_img: linear-gradient(45deg, blue, red)
 
 # The banner image of archive page
-archive_img:
+archive_img: /images/archive_img.jpeg
 
 # If the banner of tag page not setting, it will show the top_img
 # note: tag page, not tags page (子標籤頁面的 top_img)

@@ -2,20 +2,29 @@
 layout: butt
 title: OSS静态页面托管
 date: 2023-09-18 18:45:00
+cover: /images/OSS/cover.jpg
 tags:
     - OSS
 categories:
-    - OSS
+    - Aliyun
+    - Cloud
 ---
-
+# 前言
+{% note purple 'fa-solid fa-lightbulb' flat %}
+`OSS`是阿里云提供的对象存储服务，可以用来存储各种文件，也可以用来托管静态页面。
+当你的网站只有前端页面，没有后端服务时，可以使用`OSS`来托管你的静态页面。
+比如Blog的静态页面，或者是一些小型的前端项目。
+{% endnote %}
 # 开通 OSS 服务
 
 - 访问 [阿里云官网](https://aliyun.com), 找到 `对象存储 OSS`
+![OSS](/images/OSS/OSS.jpg "OSS")
 - 点击`立即开通`完成账号注册及开通后，进入`OSS 控制台`
 
 # 创建 Bucket
 
 - 按照指引点击`创建 Bucket`来创建一个部署前端代码的`容器`
+![创建Bucket](/images/OSS/createBucket.jpg "创建Bucket")
 - 版本控制选择`不开通`之后，参考下列提示一项项填写表单
     - `Bucket 名称`: 填写一个全网唯一英文的名称，单词之间用中横线`-`连接。
     - `地域`: 选择一个离自己最近的网点。
@@ -28,12 +37,15 @@ categories:
 # 设置 Bucket
 
 - 创建成功后进入`数据管理`->`静态页面`
+![静态页面](/images/OSS/staticPage.jpg "静态页面")
     - 点击`静态页面`的`设置`，`默认首页`设置为`index.html`,其他保持不变点`保存`
 - 选择`文件管理`的`上传文件`，将`index.html`及同文件夹的所有文件拖拽至上传页面，点击`上传文件`
 
 # 绑定 域名
 
 - 找到`Bucket 配置`->`域名管理`->`绑定域名`，填写要绑定的域名。
+![绑定域名](/images/OSS/bindDomain.jpg "绑定域名")
+![绑定域名](/images/OSS/bindDomain2.jpg "绑定域名")
 - 若绑定的域名在当前账号内，可以自动完成添加`CNAME`记录的功能，打开自动添加 CNAME 记录的功能后点击`提交`即可。
 - 否则请在点击`提交`后，前往个人域名的控制台手动添加一条`CNAME`记录。
 
@@ -47,7 +59,3 @@ categories:
 - 其余保持默认。
 
 ---
-
-# 总结
-
-使用OSS部署前端网站可以非常快速优雅的在一个OSS里部署多个网站。

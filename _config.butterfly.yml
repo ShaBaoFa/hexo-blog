@@ -18,13 +18,20 @@ menu:
  数据库||fa-solid fa-database:
   MySQL: /categories/MySQL/
   Redis: /categories/Redis/
+ Cloud||fa-solid fa-cloud:
+#  AWS: /categories/AWS/
+#  Azure: /categories/Azure/
+#  GCP: /categories/GCP/
+  Aliyun: /categories/Aliyun/
+#  TencentCloud: /categories/TencentCloud/
  Coder||fa-solid fa-code:
   PHP: /categories/PHP/
   Laravel: /categories/Laravel/
   Python: /categories/Python/
  运维||fa-solid fa-screwdriver-wrench:
-  Docker: /categories/Laravel/
-  Kubernetes: /categories/Laravel/
+  Docker: /categories/Docker/
+  Kubernetes: /categories/Kubernetes/
+  Nginx: /categories/Nginx/
   # Vue: /categories/Vue/
 #  Web: /categories/Web/
   # 客户端||fas fa-mug-hot:
@@ -52,6 +59,8 @@ social:
  fab fa-github: https://github.com/ShabaoFa || GitHub'
  fas fa-envelope: mailto:wlfpanda@gmail.com || Email'
  fa-brands fa-docker: https://hub.docker.com/u/wlfpanda1012 || DockerHub'
+# fa-brands fa-instagram: https://www.instagram.com/wlfpanda1012 || Instagram'
+
 # fas fa-mobile: tel:159-****-2118 || Phone || '#24292e'
 # fa-brands fa-weixin: mailto:wlfpanda@gmail.com || Wechat || '#24292e'
 
@@ -77,7 +86,7 @@ default_top_img: transparent
 #default_top_img: linear-gradient(45deg, blue, red)
 
 # The banner image of archive page
-archive_img: /images/archive_img.jpeg
+archive_img:
 
 # If the banner of tag page not setting, it will show the top_img
 # note: tag page, not tags page (子標籤頁面的 top_img)
@@ -96,6 +105,7 @@ category_img:
 # format:
 #  - category name: xxxxx
 category_per_img:
+  - Laravel: /images/category/laravel.jpeg
 
 cover:
   # display the cover or not (是否顯示文章封面)

@@ -37,7 +37,7 @@ menu:
   # 客户端||fas fa-mug-hot:
   # C#: /categories/CS/
   # Unity: /categories/Unity/
-# 三方服务: /categories/ThreeParty || fas fa-dice-three
+ 三方文档: /categories/ThreeParty || fas fa-dice-three
  项目||fa-solid fa-diagram-project:
   canned-coder: /categories/canned-coder/
   sentry-white: /categories/sentry-white/

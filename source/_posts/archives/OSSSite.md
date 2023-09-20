@@ -6,7 +6,7 @@ cover: /images/OSS/cover.jpg
 tags:
     - OSS
 categories:
-    - Aliyun
+    - ThreeParty
     - Cloud
 ---
 # 前言

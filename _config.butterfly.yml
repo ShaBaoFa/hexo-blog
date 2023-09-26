@@ -238,7 +238,7 @@ footer:
   owner:
     enable: true
     since: 2020
-  custom_text: 忠于自己，忠于生活
+  custom_text: 忠于自己，忠于生活<br><a href="https://beian.miit.gov.cn/"><span>备案号：浙ICP备2023029017号-1</span></a>
   copyright: false # Copyright of theme and framework
 
 # aside (側邊欄)
@@ -374,7 +374,7 @@ rightside_item_order:
 
 # MathJax
 mathjax:
-  enable: false
+  enable: true
   per_page: false
 
 # KaTeX

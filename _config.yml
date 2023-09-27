@@ -113,3 +113,9 @@ kramed:
   breaks: true
   smartLists: true
   smartypants: true
+
+flowchart:
+  # raphael:   # optional, the source url of raphael.js
+  flowchart: "https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"
+  options: # options used for `drawSVG`
+    "scale": 1,

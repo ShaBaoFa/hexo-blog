@@ -33,32 +33,66 @@ note for DynamicString"它的内部结构类似于 Java 的 ArrayList ，其中 
 # Hash
 Redis的Hash类似于Java中的Map，可以存储键值对，但是Redis的Hash只能存储字符串类型的键值对，无法存储其他类型的键值对。
 不过Redis的Hash为了提高性能，会将Hash的键值对进行压缩，所以Redis的Hash比Java的Map更节省内存。
+
+**以下是HashMap的流程示意图**
+
 {% mermaid %}
 graph TD
-Array[Entry 数组]
-Entry1((Entry1))
-Entry2((Entry2))
-Entry3((Entry3))
-EntryN((EntryN))
-EntryN1((EntryN1))
-RBTree{红黑树}
-    Array --> Entry1
-    Array --> Entry2
-    Array --> Entry3
-    Entry3 --> EntryN
-    EntryN --> EntryN1
-    EntryN1 --> RBTree
-    note1[每个 Entry 是一个链表结构]
-    note2[链表长度 > 8 则转为红黑树]
-    Entry1 --- note1
-    RBTree --- note2
-    style RBTree fill:#f66,stroke:#333,stroke-width:2px
+
+st[开始节点]:::startEndStyle
+cond1{table 是否为空 or length = 0}:::conditionStyle
+op1[resize 扩容]:::operationStyle
+op2[根据键值 key 计算 hash 值得到插入的数组索引 i]:::operationStyle
+cond2{table 的数组索引 i 是否为空}:::conditionStyle
+cond3{是否存在 key}:::conditionStyle
+op3[将 key-value 插入到 table 的数组索引 i 中]:::operationStyle
+op4[将 key 的 value 替换为新的 value]:::operationStyle
+cond4{++size > threshold}:::conditionStyle
+cond5{table 的数组索引 i 是否为 treeNode}:::conditionStyle
+op5[resize 扩容]:::operationStyle
+op6[红黑树直接插入 key-value]:::operationStyle
+op7[开始遍历链表准备插入]:::operationStyle
+cond6{链表长度是否大于 8}:::conditionStyle
+op8[将链表转换为红黑树,插入 key-value]:::operationStyle
+op9[链表插入 若key存在直接覆盖value]:::operationStyle
+e[结束节点]:::startEndStyle
+
+st --> cond1
+cond1 -->|No| op1
+op1 --> op2
+cond1 -->|Yes| op2
+op2 --> cond2
+cond2 -->|Yes| op3
+cond2 -->|No| cond3
+cond3 -->|Yes| op4
+cond3 -->|No| cond5
+cond5 -->|Yes| op6
+op6 --> cond4
+cond5 -->|No| op7
+op7 --> cond6
+cond6 -->|Yes| op8
+cond6 -->|No| op9
+op8 --> cond4
+op9 --> cond4
+op3 --> cond4
+op4 --> cond4
+cond4 -->|Yes| op5
+op5 --> e
+cond4 -->|No| e
+
+classDef startEndStyle fill:#D4EDDA,stroke:#333,stroke-width:2px;
+classDef conditionStyle fill:#FFEEBA,stroke:#333,stroke-width:2px;
+classDef operationStyle fill:#D5D8DC,stroke:#333,stroke-width:2px;
 {% endmermaid %}
+
 压缩的方法是，当Hash的键值对数量小于等于10个时，Redis会将Hash的键值对存储在一块连续的内存中，这样可以减少内存碎片。
 Redis中的Hash 和 Java 中的HashMap 区别在于，Redis中hash（字典）的值只能是字符串。另外它们的rehash的方式也不一样，因为Java的HashMap在字典很大时，rehash是个耗时的操作，需要一次性全部rehash。Redis为了高性能，不能堵塞服务，所以采用了渐进式rehash策略。
 ## 渐进式 rehash 策略
 渐进式 rehash 会在 rehash 的同时，保留新旧两个 hash 结构，查询时会同时查询两个 hash结构，然后在后续的定时任务中以及 hash 的子指令中，循序渐进地将旧 hash 的内容一点点迁移到新的 hash 结构中。
 当hash移除了最后一个元素之后，该数据结构自动被删除，内存被回收。
+
+**以下是渐进式 rehash 的示意图**
+
 {% mermaid %}
 sequenceDiagram
 participant Client as 客户端
@@ -106,3 +140,4 @@ HMSET user:{id} name "Fred" age 25
 在这次学习过程中，我翻阅了部分redis的文档，其中关于内存优化的内容，让我对redis的hash有了进一步的认知。
 某种程度上，上面的一些关于redis-hash的定义是存在错误的（不完全是）。因为redis的开发团队在针对hash的存储进行了优化，只有当哈希超过指定的元素数量或元素大小时，它才会被转换为真正的哈希表。
 具体内存优化的内容翻译，我会专门开一篇文章进行翻译。
+传送门:[Redis 内存优化](/2023/09/27/archives/redisTec002/) 

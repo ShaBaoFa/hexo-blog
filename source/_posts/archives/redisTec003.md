@@ -10,7 +10,7 @@ Redis键驱逐策略概述（LRU 最近最少使用（Least Recently Used），L
 
 当Redis用作缓存时，通常可以方便地让它在添加新数据时自动驱逐旧数据。这种行为在开发者社区中非常知名，因为它是流行的*memcached*系统的默认行为。
 
-Redis的**maxmemory**，该指令用于限制内存使用量为固定值。它还广泛介绍了Redis使用的LRU驱逐算法，实际上是对精确LRU的近似。
+Redis的**maxmemory**，该指令用于限制内存使用量为固定值。
 
 # Maxmemory 配置指令
 

@@ -5,9 +5,8 @@ date: 2023-09-18 18:45:00
 cover: /images/OSS/cover.jpg
 tags:
     - OSS
-categories:
-    - ThreeParty
     - Cloud
+category: Cloud
 ---
 # 前言
 {% note purple 'fa-solid fa-lightbulb' flat %}

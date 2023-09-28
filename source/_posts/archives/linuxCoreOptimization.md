@@ -5,9 +5,7 @@ date: 2023-09-18 16:37:25
 cover: /images/QNAP/qnap.jpeg
 tags:
   - Linux
-categories:
-  - Linux
-  - QNAP
+category: Linux
 ---
 
 # 前言

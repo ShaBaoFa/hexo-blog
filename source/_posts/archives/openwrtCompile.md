@@ -3,8 +3,6 @@ layout: butt
 title: Openwrt编译札记
 date: 2023-09-14 16:46:24
 tags:
-  - Openwrt
-  - Ubuntu
 category: Linux
 cover: /images/OpenWrt/cover.png
 ---

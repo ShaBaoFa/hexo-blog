@@ -4,10 +4,7 @@ title: QNAP中QBT慢速问题排查
 date: 2023-09-18 17:16:57
 cover: /images/QBT/qBittorrent.png
 tags: 
-  - QNAP
-  - qbt
-  - Linux
-category: Linux
+category: QNAP
 ---
 
 通常来说，经常会遇到的情况就是 tracker 问题。 红种/黄种/无法连接/今天遇到的情况/etc.

@@ -5,7 +5,7 @@ cover: /images/OSS/cover.jpg
 tags:
   - OSS
   - Cloud
-category: Cloud
+category: Aliyun
 ---
 # 前言
 {% note purple 'fa-solid fa-lightbulb' flat %}

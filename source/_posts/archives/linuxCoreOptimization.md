@@ -4,8 +4,7 @@ title: QNAP linux core 优化
 date: 2023-09-18 16:37:25
 cover: /images/QNAP/qnap.jpeg
 tags:
-  - Linux
-category: Linux
+category: QNAP
 ---
 
 # 前言

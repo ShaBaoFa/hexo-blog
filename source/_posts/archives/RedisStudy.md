@@ -4,8 +4,7 @@ title: Redis命令大全
 mathjax: true
 date: 2023-09-19 15:36:07
 tags:
-categories:
-  - Redis
+category: Redis
 ---
 
 # 前言

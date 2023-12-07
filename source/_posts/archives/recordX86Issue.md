@@ -5,8 +5,6 @@ date: 2023-09-13 16:24:32
 cover: /images/X86/istoreos.png
 description: 一次手欠update的惊魂体验😰
 tags:
-  - X86
-  - openwrt
 category: X86
 ---
 # 前情提要:

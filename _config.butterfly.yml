@@ -28,9 +28,10 @@ menu:
   PHP: /categories/PHP/
   Laravel: /categories/Laravel/
   Python: /categories/Python/
+  Mq: /categories/Mq/
  运维||fa-solid fa-screwdriver-wrench:
   Docker: /categories/Docker/
-  Kubernetes: /categories/Kubernetes/
+#  Kubernetes: /categories/Kubernetes/
   Nginx: /categories/Nginx/
   # Vue: /categories/Vue/
 #  Web: /categories/Web/

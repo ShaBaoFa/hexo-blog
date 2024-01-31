@@ -27,6 +27,7 @@ menu:
  Coder||fa-solid fa-code:
   PHP: /categories/PHP/
   Laravel: /categories/Laravel/
+  Composer: /categories/Composer/
   Hyperf: /categories/Hyperf/
   Python: /categories/Python/
   Mq: /categories/Mq/

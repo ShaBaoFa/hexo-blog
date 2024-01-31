@@ -6,6 +6,8 @@ tags:
 category: Laravel
 ---
 {% note purple 'fa-solid fa-lightbulb' flat %}
-你还在只用artisan来进行migrate db:seed？
-artisan能让你跑的command花里胡哨，你还不来看看？
+你还在只用`artisan`来进行`migrate db:seed`？
+`artisan`能让你跑的`command`花里胡哨，你还不来看看？
 {% endnote %}
+
+一下子没头绪了,~~断更~~)

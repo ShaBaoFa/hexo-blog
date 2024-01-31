@@ -27,6 +27,7 @@ menu:
  Coder||fa-solid fa-code:
   PHP: /categories/PHP/
   Laravel: /categories/Laravel/
+  Hyperf: /categories/Hyperf/
   Python: /categories/Python/
   Mq: /categories/Mq/
  运维||fa-solid fa-screwdriver-wrench:

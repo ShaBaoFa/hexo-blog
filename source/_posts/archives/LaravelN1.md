@@ -31,7 +31,7 @@ DB::listen(function ($query) {
 这是最常见的N+1困境。当你需要在返回的`resource`里附带上所有`User` 的`Hall` 信息时，最简单的方法就是获取利用对应模型里面里预先写好的`BelongTo`方法去获取`hall`的信息。
 
 ```php
-$users = User::query()->with('hall')->get(); //1次
+$users = User::query()->get(); //1次
 foreach ($users as $user) {
 		$user->hall; // N次
 }

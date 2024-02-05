@@ -5,6 +5,7 @@ date: 2023-10-07 15:31:33
 tags:
 category: Redis
 mathjax: true
+cover: /images/redis.png
 ---
 ## 前言
 {% note purple 'fa-solid fa-lightbulb' flat %}

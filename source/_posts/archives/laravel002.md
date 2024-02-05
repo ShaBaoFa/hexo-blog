@@ -4,6 +4,7 @@ title: laravel 队列小技巧
 date: 2023-12-07 16:10:17
 tags:
 category: Laravel
+cover: /images//laravel.webp
 ---
 
 # 前言

@@ -3,6 +3,7 @@ layout: butt
 title: hyperf微服务实战
 date: 2024-01-30 16:53:12
 category: Hyperf
+cover: /images/hyperf.jpeg
 ---
 # 前言
 

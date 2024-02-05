@@ -4,6 +4,7 @@ title: Redis之批量删除keys
 date: 2023-09-30 23:53:06
 tags:
 category: Redis
+cover: /images/redis.png
 ---
 # 前言
 {% note purple 'fa-solid fa-lightbulb' flat %}

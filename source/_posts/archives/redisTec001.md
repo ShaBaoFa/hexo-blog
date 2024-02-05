@@ -4,6 +4,7 @@ title: Redis保存JSON结构体之String VS HASH
 date: 2023-09-26 16:53:32
 tags:
 category: Redis
+cover: /images/redis.png
 ---
 
 # 前言

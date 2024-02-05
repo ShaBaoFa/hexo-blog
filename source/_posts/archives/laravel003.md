@@ -4,6 +4,7 @@ title: laravel 神奇的artisan
 date: 2023-12-22 11:29:13
 tags:
 category: Laravel
+cover: /images/laravel.webp
 ---
 {% note purple 'fa-solid fa-lightbulb' flat %}
 你还在只用`artisan`来进行`migrate db:seed`？

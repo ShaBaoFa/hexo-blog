@@ -3,6 +3,7 @@ layout: butt
 title: 通过Octane(swoole)来提升Laravel性能
 date: 2024-01-25 09:10:10
 category: Laravel
+cover: /images/laravel.webp
 tags:
 ---
 

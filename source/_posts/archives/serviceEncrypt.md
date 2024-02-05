@@ -4,6 +4,7 @@ title: 服务通信加解密之SM3+SM4
 date: 2023-09-20 16:51:45
 tags:
 category: PHP
+cover: /images/sm3.jpeg
 ---
 # 前言
 {% note purple 'fa-solid fa-lightbulb' flat %}

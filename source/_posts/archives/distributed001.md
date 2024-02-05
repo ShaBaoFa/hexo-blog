@@ -4,6 +4,7 @@ title: 分布式事务
 date: 2023-12-07 10:07:36
 tags:
 category: MySQL
+cover: /images/cap.png
 ---
 {% note purple 'fa-solid fa-lightbulb' flat %}
 分布式事务是指事务跨越多个数据库或多个系统的事务，这些数据库或系统分布在不同的服务器上。

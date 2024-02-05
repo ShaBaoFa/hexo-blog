@@ -5,6 +5,7 @@ date: 2023-09-27 11:46:38
 tags:
 category: Redis
 mathjax: true
+cover: /images/redis.png
 ---
 
 # 前言

@@ -4,6 +4,7 @@ title: Redis之缓存击穿&缓存雪崩
 date: 2023-10-10 16:02:40
 tags:
 category: Redis
+cover: /images/redis.png
 ---
 # 前言
 {% note purple 'fa-solid fa-lightbulb' flat %}

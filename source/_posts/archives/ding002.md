@@ -4,6 +4,7 @@ title: 浙政钉-扫码登录对接
 date: 2023-12-05 16:54:49
 tags:
 category: ThreeParty
+cover: /images/zzd.png
 ---
 # 前言
 {% note purple 'fa-solid fa-lightbulb' flat %}

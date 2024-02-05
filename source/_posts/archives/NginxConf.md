@@ -4,6 +4,7 @@ title: Nginx配置解析
 date: 2023-09-19 16:39:57
 tags:
 category: Nginx
+cover: /images/nginx.png
 ---
 # 前言
 {% note purple 'fa-solid fa-lightbulb' flat %}

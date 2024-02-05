@@ -4,6 +4,7 @@ title: Redis之(驱逐)eviction
 date: 2023-09-27 18:16:47
 tags:
 category: Redis
+cover: /images/redis.png
 ---
 # 键驱逐
 Redis键驱逐策略概述（LRU 最近最少使用（Least Recently Used），LFU 最少使用频率（Least Frequently Used)等）

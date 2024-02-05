@@ -3,6 +3,7 @@ layout: butt
 title: 创建和使用自己的composer包
 date: 2024-01-31 14:43:48
 category: Composer
+cover: /images/composer.png
 ---
 # 前言
 

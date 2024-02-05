@@ -2,12 +2,15 @@
 layout: butt
 title: butt-文章发布格式
 date: 2023-09-13 17:06:23
+cover: /images/butt.png
 ---
 
 {% note purple 'far fa-hand-scissors' flat %}
 剪刀石头布
 {% endnote %}
-
+{% note orange 'far fa-hand-scissors' flat %}
+剪刀石头布
+{% endnote %}
 
 {% mermaid %}
 pie

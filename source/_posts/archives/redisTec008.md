@@ -4,6 +4,7 @@ title: Redis之数据库与缓存一致性问题
 date: 2023-10-11 14:27:16
 tags:
 category: Redis
+cover: /images/redis.png
 ---
 # 前言
 {% note purple 'fa-solid fa-lightbulb' flat %}

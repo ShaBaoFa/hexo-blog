@@ -43,7 +43,7 @@ menu:
  三方文档: /categories/ThreeParty || fas fa-dice-three
  项目||fa-solid fa-diagram-project:
   canned-coder: /categories/canned-coder/
-  sentry-white: /categories/sentry-white/
+#  sentry-white: /categories/sentry-white/
 
 # Code Blocks (代碼相關)
 # --------------------------------------

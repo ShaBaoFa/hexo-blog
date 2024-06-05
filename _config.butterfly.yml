@@ -44,6 +44,7 @@ menu:
  项目||fa-solid fa-diagram-project:
   canned-coder: /categories/canned-coder/
 #  sentry-white: /categories/sentry-white/
+ 友情链接: /link/ || fas fa-link
 
 # Code Blocks (代碼相關)
 # --------------------------------------

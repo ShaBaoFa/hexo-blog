@@ -1,16 +1,14 @@
 ---
 layout: butt
 title: hyperf微服务实战
-date: 2024-01-30 16:53:12
+date: 2023-01-30 16:53:12
 category: Hyperf
 cover: /images/hyperf.jpeg
 ---
 # 前言
 
 {% note purple 'fa-solid fa-lightbulb' flat %}
-最近在学习 `hyperf` 框架，公司有个项目需要用到 微服务(基于RPC多路复用)，所以就学习了一下。
-[李铭昕老师的微服务实战视频](https://www.bilibili.com/video/BV1wN4y1q7kQ)
-我这里为了巩固自己的知识，所以把视频中的代码敲了一遍，顺便记录一下。
+公司有个项目需要用到 微服务于是决定用 `hyperf` 框架(基于RPC多路复用),来解决微服务通信问题。
 {% endnote %}
 
 # 基础平台-用户服务

@@ -33,7 +33,7 @@ menu:
   Mq: /categories/Mq/
  运维||fa-solid fa-screwdriver-wrench:
   Docker: /categories/Docker/
-#  Kubernetes: /categories/Kubernetes/
+  Kubernetes: /categories/Jmeter/
   Nginx: /categories/Nginx/
   # Vue: /categories/Vue/
 #  Web: /categories/Web/
@@ -45,6 +45,7 @@ menu:
   canned-coder: /categories/canned-coder/
  友情链接: /link/||fa-solid fa-link
 #  sentry-white: /categories/sentry-white/
+ 友情链接: /link/ || fas fa-link
 
 # Code Blocks (代碼相關)
 # --------------------------------------
@@ -61,7 +62,7 @@ code_word_wrap: true
 #   icon: link || the description || color
 social:
  fab fa-github: https://github.com/ShabaoFa || GitHub'
- fas fa-envelope: mailto:wlfpanda1012@gmail.com || Email'
+ fas fa-envelope: mailto:mail@wlfpanda1012.com || Email'
  fa-brands fa-docker: https://hub.docker.com/u/wlfpanda1012 || DockerHub'
 # fa-brands fa-instagram: https://www.instagram.com/wlfpanda1012 || Instagram'
 

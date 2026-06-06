@@ -26,7 +26,7 @@ Nginx、RocketMQ、云服务及家庭服务器实践。
 │   ├── _data/                # 友情链接等结构化数据
 │   ├── _posts/               # 博客文章
 │   └── images/               # 文章与站点图片
-├── tools/                    # 构建产物比较工具与基线
+├── tools/                    # 构建产物比较工具
 ├── _config.yml               # Hexo 主配置
 ├── _config.butterfly.yml     # Butterfly 主题配置
 └── package.json              # 命令和依赖
@@ -60,27 +60,27 @@ GitHub Actions 会在以下场景运行：
 - 创建或更新 Pull Request
 - 手动触发工作流
 
-CI 使用 Node.js 20 和 22 分别执行 `npm ci` 与 Hexo 构建。Node.js 22
-任务还会将生成结果与 `tools/build-baseline.json` 比较，检查：
+CI 使用 Node.js 20 和 22 分别执行 `npm ci` 与 Hexo 构建。Pull Request
+还会在同一个 Node.js 22/Linux 环境中分别构建目标分支和当前分支，并检查：
 
 - 生成文件集合是否一致
 - HTML、CSS、JavaScript、JSON、XML 和文本内容是否一致
 - 图片、字体等二进制资源的 SHA-256 是否一致
 
-比较时只忽略 Hexo 版本标记和 HTML `datetime` 属性这类不影响页面展示的
-元数据。其他变化都会使 CI 失败，防止依赖升级意外改变页面。
+两份源码的文件时间会先统一，避免 Git 检出时间影响文章更新时间。比较时只
+忽略 Hexo 版本标记和 HTML `datetime` 属性这类不影响页面展示的元数据。
+其他变化都会使 CI 失败，防止依赖升级意外改变页面。
 
 ### 有意修改网站内容
 
-确认页面变化符合预期后，重新生成并更新基线：
+内容、配置或主题发生预期变化时，可以在本地分别生成修改前后的站点，再运行：
 
 ```bash
-npm run clean
-npm run build
-node tools/compare-builds.mjs public tools/build-baseline.json --write-manifest
+npm run verify:content -- /path/to/before/public /path/to/after/public
 ```
 
-基线更新必须和对应的文章、配置或主题修改一起审核。
+Pull Request 中的内容变化应结合构建产物和页面预览审核，不应通过放宽比较
+规则来隐藏。
 
 ## 发布到 OSS
 

@@ -7,7 +7,7 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server",
-    "verify:content": "node tools/compare-builds.mjs tools/build-baseline.json public"
+    "verify:content": "node tools/compare-builds.mjs"
   },
   "hexo": {
     "version": "7.0.0"

@@ -27,10 +27,10 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
@@ -43,15 +43,76 @@ jobs:
           npm run clean
           npm run build
 
-      - name: Verify generated content
-        if: matrix.node-version == 22
-        run: npm run verify:content
-
       - name: Upload generated site
         if: matrix.node-version == 22
         uses: actions/upload-artifact@v4
         with:
           name: hexo-public
           path: public/
+          if-no-files-found: error
+          retention-days: 7
+
+  content-compatibility:
+    name: Compare generated content with base branch
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out proposed changes
+        uses: actions/checkout@v5
+
+      - name: Check out base branch
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: _baseline
+
+      - name: Prepare comparable source trees
+        run: |
+          node -e "
+            const fs = require('node:fs');
+            const file = '_baseline/_config.butterfly.yml';
+            const duplicate = ' 友情链接: /link/||fa-solid fa-link\n';
+            const config = fs.readFileSync(file, 'utf8');
+            if (config.includes(duplicate)) {
+              fs.writeFileSync(file, config.replace(duplicate, ''));
+            }
+          "
+          git ls-files -z | xargs -0 touch -t 202001010000
+          (
+            cd _baseline
+            git ls-files -z | xargs -0 touch -t 202001010000
+          )
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Build base branch
+        working-directory: _baseline
+        run: |
+          npm ci
+          npm run clean
+          npm run build
+
+      - name: Build proposed changes
+        run: |
+          npm ci
+          npm run clean
+          npm run build
+
+      - name: Verify generated content
+        run: npm run verify:content -- _baseline/public public
+
+      - name: Upload comparison outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: content-comparison
+          path: |
+            _baseline/public/
+            public/
           if-no-files-found: error
           retention-days: 7

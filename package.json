@@ -6,13 +6,14 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server"
+    "server": "hexo server",
+    "verify:content": "node tools/compare-builds.mjs tools/build-baseline.json public"
   },
   "hexo": {
-    "version": "6.3.0"
+    "version": "7.0.0"
   },
   "dependencies": {
-    "hexo": "^6.3.0",
+    "hexo": "^7.0.0",
     "hexo-filter-flowchart": "^1.0.4",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",

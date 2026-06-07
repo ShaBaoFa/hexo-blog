@@ -20,6 +20,17 @@ export OSS_ACCESS_KEY_ID="$OSS_AK"
 export OSS_ACCESS_KEY_SECRET="$OSS_AK_SECRET"
 export OSS_ENDPOINT
 
+endpoint_host="${OSS_ENDPOINT#*://}"
+endpoint_host="${endpoint_host%%/*}"
+if [[ "$endpoint_host" == oss-*.aliyuncs.com ]]; then
+  oss_region="${endpoint_host#oss-}"
+  oss_region="${oss_region%.aliyuncs.com}"
+  export OSS_REGION="${oss_region%-internal}"
+else
+  echo "Cannot derive OSS region from endpoint: ${endpoint_host}" >&2
+  exit 1
+fi
+
 OSSUTIL_BIN="${OSSUTIL_BIN:-ossutil}"
 
 npm run clean

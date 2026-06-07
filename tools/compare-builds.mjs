@@ -35,13 +35,30 @@ async function listFiles(root, directory = root) {
 }
 
 function normalizeText(relativePath, content) {
+  if (relativePath === 'search.xml') {
+    const entries = [...content.matchAll(/  <entry>[\s\S]*?  <\/entry>/g)];
+    if (entries.length > 0) {
+      const firstEntry = entries[0];
+      const lastEntry = entries.at(-1);
+      const prefix = content.slice(0, firstEntry.index);
+      const suffix = content.slice(lastEntry.index + lastEntry[0].length);
+      return `${prefix}${entries.map(match => match[0]).sort().join('\n')}${suffix}`;
+    }
+  }
+
   if (path.extname(relativePath) !== '.html') {
     return content;
   }
 
-  return content
+  const normalized = content
     .replace(/<meta name="generator" content="Hexo [^"]+">/g, '<meta name="generator" content="Hexo">')
-    .replace(/<time[^>]*datetime="[^"]*"[^>]*>/g, match => match.replace(/datetime="[^"]*"/, 'datetime=""'));
+    .replace(/<time[^>]*datetime="[^"]*"[^>]*>/g, match => match.replace(/datetime="[^"]*"/, 'datetime=""'))
+    .replace(/postUpdate: '[^']*'/g, "postUpdate: ''")
+    .replace(/data-lastPushDate="[^"]*"/g, 'data-lastPushDate=""');
+
+  return relativePath === 'tags/index.html'
+    ? normalized.replace(/color: rgb\(\d+, \d+, \d+\)/g, 'color: rgb()')
+    : normalized;
 }
 
 function digest(content) {

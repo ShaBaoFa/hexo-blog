@@ -8,11 +8,11 @@ Nginx、RocketMQ、云服务及家庭服务器实践。
 
 ## 技术栈
 
-- 静态站点生成器：Hexo 7
+- 静态站点生成器：Hexo 6.3
 - 主题：Butterfly 4.9
 - 模板与样式：EJS、Pug、Stylus
 - 内容格式：Markdown
-- 搜索：`hexo-generator-search`、`hexo-generator-searchdb`
+- 搜索：`hexo-generator-searchdb`
 - 自动化：GitHub Actions
 - 生产发布：仓库保留了阿里云 OSS 上传脚本
 
@@ -68,8 +68,10 @@ CI 使用 Node.js 20 和 22 分别执行 `npm ci` 与 Hexo 构建。Pull Request
 - 图片、字体等二进制资源的 SHA-256 是否一致
 
 两份源码的文件时间会先统一，避免 Git 检出时间影响文章更新时间。比较时只
-忽略 Hexo 版本标记和 HTML `datetime` 属性这类不影响页面展示的元数据。
-其他变化都会使 CI 失败，防止依赖升级意外改变页面。
+忽略构建时间、Hexo 版本标记和 HTML `datetime` 属性这类不影响页面展示的
+元数据。标签云原本使用随机排序和随机颜色，比较构建会临时改为按名称排序，
+并忽略标签总览页的随机 RGB 值，避免主题自身的随机性造成误报。其他变化都会
+使 CI 失败，防止依赖升级意外改变页面。
 
 ### 有意修改网站内容
 
@@ -99,4 +101,8 @@ cp ossutil.cfg.example ossutil.cfg
 ## 依赖维护
 
 依赖由 `package-lock.json` 固定，安装时应使用 `npm ci`。Dependabot 每日
-检查 npm 更新；升级 PR 必须通过构建和内容一致性检查后才能合并。
+检查 npm 更新；升级 PR 必须通过构建和内容一致性检查后才能合并。Hexo 7
+会改变搜索索引、HTML 实体编码和标签排列，因此当前保留 Hexo 6.3；
+`hexo-generator-searchdb` 1.5 也会改变索引内容，继续保留 1.4。项目已移除
+会竞争写入同一个 `search.xml` 的 `hexo-generator-search`，避免搜索索引随机
+变化。Butterfly 保留 4.9，主题升级应单独进行视觉回归检查。

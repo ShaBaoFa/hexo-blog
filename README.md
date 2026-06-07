@@ -98,6 +98,20 @@ cp ossutil.cfg.example ossutil.cfg
 提交到仓库。上传脚本包含远端递归删除操作，生产执行前应确认 Bucket 名称和
 备份策略。
 
+## 发布到 GitHub Pages
+
+`.github/workflows/pages.yml` 提供持续部署流水线。`main` 分支的 `Hexo CI`
+全部通过后，流水线会使用 Node.js 22 从对应提交重新构建站点，并通过 GitHub
+Pages 官方 Actions 发布。
+
+部署产物会自动包含：
+
+- `.nojekyll`，避免 GitHub Pages 使用 Jekyll 二次处理
+- `CNAME`，绑定自定义域名 `blog.wlfpanda1012.com`
+
+工作流也支持从 GitHub Actions 页面手动触发。仓库的 Pages 构建来源必须设置
+为 GitHub Actions，自定义域名还需要正确配置 DNS。
+
 ## 依赖维护
 
 依赖由 `package-lock.json` 固定，安装时应使用 `npm ci`。Dependabot 每日

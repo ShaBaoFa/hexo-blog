@@ -1,13 +1,30 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-TARGET_BUCKET=wlfpanda-blog
+set -euo pipefail
 
-echo "uploading..."
+required_variables=(
+  OSS_AK
+  OSS_AK_SECRET
+  OSS_ENDPOINT
+  OSS_TARGET_BUCKET
+)
 
-hexo clean
-hexo g
+for variable in "${required_variables[@]}"; do
+  if [[ -z "${!variable:-}" ]]; then
+    echo "Missing required environment variable: ${variable}" >&2
+    exit 1
+  fi
+done
 
-./ossutilmac64 -c ossutil.cfg rm -rf oss://$TARGET_BUCKET/
-./ossutilmac64 -c ossutil.cfg cp -rf public/ oss://$TARGET_BUCKET/
+export OSS_ACCESS_KEY_ID="$OSS_AK"
+export OSS_ACCESS_KEY_SECRET="$OSS_AK_SECRET"
+export OSS_ENDPOINT
 
-echo "done"
+OSSUTIL_BIN="${OSSUTIL_BIN:-ossutil}"
+
+npm run clean
+npm run build
+
+"$OSSUTIL_BIN" sync public/ "oss://${OSS_TARGET_BUCKET}/" --delete --force
+
+echo "Deployed public/ to oss://${OSS_TARGET_BUCKET}/"

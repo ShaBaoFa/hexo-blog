@@ -18,8 +18,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    name: Build and deploy
+  pages:
+    name: Deploy to GitHub Pages
     if: >-
       github.event_name == 'workflow_dispatch' ||
       (github.event.workflow_run.conclusion == 'success' &&
@@ -49,10 +49,9 @@ jobs:
 
       - name: Build site
         run: |
-          npm run clean
-          npm run build
+          npx hexo clean
+          npx hexo generate --config _config.yml,_config.github-pages.yml
           touch public/.nojekyll
-          printf '%s\n' 'blog.wlfpanda1012.com' > public/CNAME
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
@@ -62,3 +61,49 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+
+  oss:
+    name: Deploy to Alibaba Cloud OSS
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'main')
+    runs-on: ubuntu-latest
+    env:
+      OSS_AK: ${{ secrets.OSS_AK }}
+      OSS_AK_SECRET: ${{ secrets.OSS_AK_SECRET }}
+      OSS_ENDPOINT: ${{ secrets.OSS_ENDPOINT }}
+      OSS_LANG: ${{ secrets.OSS_LANG }}
+      OSS_TARGET_BUCKET: ${{ secrets.OSS_TARGET_BUCKET }}
+
+    steps:
+      - name: Check out tested revision
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Install ossutil
+        run: |
+          curl -fsSL \
+            https://gosspublic.alicdn.com/ossutil/v2/2.3.0/ossutil-2.3.0-linux-amd64.zip \
+            -o "$RUNNER_TEMP/ossutil.zip"
+          echo "3ae4d9fc85a7a6e9f5654d1599766f1a3a42a3692870887b5ae9338d582ef65a  $RUNNER_TEMP/ossutil.zip" \
+            | sha256sum --check
+          unzip -q "$RUNNER_TEMP/ossutil.zip" -d "$RUNNER_TEMP"
+          install -m 0755 \
+            "$RUNNER_TEMP/ossutil-2.3.0-linux-amd64/ossutil" \
+            "$RUNNER_TEMP/ossutil"
+
+      - name: Build and deploy to OSS
+        env:
+          OSSUTIL_BIN: ${{ runner.temp }}/ossutil
+        run: ./upload_oss.sh

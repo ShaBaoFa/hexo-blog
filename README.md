@@ -86,31 +86,35 @@ Pull Request 中的内容变化应结合构建产物和页面预览审核，不�
 
 ## 发布到 OSS
 
-`upload_oss.sh` 会重新构建网站，清空目标 Bucket 后上传整个 `public/`
-目录。执行前需要从 `ossutil.cfg.example` 创建本地 `ossutil.cfg`。
+`upload_oss.sh` 会重新构建网站，再使用 `ossutil sync --delete` 将 `public/`
+同步到目标 Bucket。脚本需要安装 `ossutil` 并设置以下环境变量：
 
 ```bash
-cp ossutil.cfg.example ossutil.cfg
+export OSS_AK=...
+export OSS_AK_SECRET=...
+export OSS_ENDPOINT=...
+export OSS_TARGET_BUCKET=...
 ./upload_oss.sh
 ```
 
-`ossutil.cfg` 已被 `.gitignore` 排除。不要将 AccessKey、Secret 或其他凭据
-提交到仓库。上传脚本包含远端递归删除操作，生产执行前应确认 Bucket 名称和
-备份策略。
+不要将 AccessKey、Secret 或其他凭据提交到仓库。同步命令会删除 Bucket 中
+本地不存在的文件，生产执行前应确认 Bucket 名称、版本控制和备份策略。
 
 ## 发布到 GitHub Pages
 
-`.github/workflows/pages.yml` 提供持续部署流水线。`main` 分支的 `Hexo CI`
-全部通过后，流水线会使用 Node.js 22 从对应提交重新构建站点，并通过 GitHub
-Pages 官方 Actions 发布。
+`.github/workflows/pages.yml` 提供双目标持续部署流水线。`main` 分支的
+`Hexo CI` 全部通过后，流水线会使用 Node.js 22 从对应提交重新构建站点：
 
-部署产物会自动包含：
+- GitHub Pages 使用 `_config.github-pages.yml`，发布到
+  `https://shabaofa.github.io/hexo-blog/`
+- 阿里云 OSS 使用默认配置，继续服务 `blog.wlfpanda1012.com`
 
-- `.nojekyll`，避免 GitHub Pages 使用 Jekyll 二次处理
-- `CNAME`，绑定自定义域名 `blog.wlfpanda1012.com`
+GitHub Pages 产物会自动包含 `.nojekyll`，避免 Jekyll 二次处理。OSS 部署
+使用仓库 Secrets：`OSS_AK`、`OSS_AK_SECRET`、`OSS_ENDPOINT`、
+`OSS_LANG` 和 `OSS_TARGET_BUCKET`。
 
 工作流也支持从 GitHub Actions 页面手动触发。仓库的 Pages 构建来源必须设置
-为 GitHub Actions，自定义域名还需要正确配置 DNS。
+为 GitHub Actions。
 
 ## 依赖维护
 
